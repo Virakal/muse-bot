@@ -1,0 +1,7 @@
+services:
+  muse:
+    image: ghcr.io/museofficial/muse:2
+    restart: unless-stopped
+    volumes:
+      - ./muse:/data
+    env_file: secrets.env
