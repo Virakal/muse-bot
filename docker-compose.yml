@@ -5,25 +5,3 @@ services:
     volumes:
       - ./muse:/data
     env_file: secrets.env
-    network_mode: "service:warp"
-    depends_on:
-      - warp
-
-  warp:
-    image: caomingjun/warp
-    restart: unless-stopped
-    ports:
-      - '1080:1080'
-    environment:
-      - WARP_SLEEP=2
-      # - WARP_LICENSE_KEY= # optional
-    cap_add:
-      - NET_ADMIN
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=0
-      - net.ipv4.conf.all.src_valid_mark=1
-    volumes:
-      - warp_data:/var/lib/cloudflare-warp
-
-volumes:
-  warp_data:
